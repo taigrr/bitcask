@@ -3,7 +3,6 @@ package bitcask
 import (
 	"bytes"
 	"context"
-	"errors"
 	"fmt"
 	"hash/crc32"
 	"io"
@@ -33,8 +32,6 @@ const (
 	lockfile     = "lock"
 	ttlIndexFile = "ttl_index"
 )
-
-var ErrContextDeadlineExceeded = errors.New("Context deadline exceeded.")
 
 // Bitcask is a struct that represents a on-disk LSM and WAL data structure
 // and in-memory hash of key/value pairs as per the Bitcask paper and seen

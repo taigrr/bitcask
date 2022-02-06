@@ -35,12 +35,17 @@ var (
 	// ErrInvalidRange is the error returned when the range scan is invalid
 	ErrInvalidRange = errors.New("error: invalid range")
 
-	// ErrInvalidVersion is the error returned when the database version is invalid
+	// ErrInvalidVersion is the error returned when the database version is
+	// invalid
 	ErrInvalidVersion = errors.New("error: invalid db version")
 
-	// ErrMergeInProgress is the error returned if merge is called when already a merge
-	// is in progress
+	// ErrMergeInProgress is the error returned if merge is called when already
+	// a merge is in progress
 	ErrMergeInProgress = errors.New("error: merge already in progress")
+
+	// ErrContextDeadlineExceeded occurs when a call to bitcask doesn't finish
+	// before the caller's context Deadline expires
+	ErrContextDeadlineExceeded = errors.New("Context deadline exceeded.")
 )
 
 // ErrBadConfig is the error returned on failure to load the database config
@@ -59,7 +64,8 @@ func (e *ErrBadConfig) Error() string {
 	return fmt.Sprintf("error reading config.json: %s", e.Err)
 }
 
-// ErrBadMetadata is the error returned on failure to load the database metadata
+// ErrBadMetadata is the error returned on failure to load the database
+// metadata
 type ErrBadMetadata struct {
 	Err error
 }
